@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1a1025" />
+  <meta name="color-scheme" content="dark" />
+  <title>For Jaan — Our Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="hearts-bg" aria-hidden="true"></div>
+  <div class="orbs" aria-hidden="true">
+    <span class="orb orb-a"></span>
+    <span class="orb orb-b"></span>
+    <span class="orb orb-c"></span>
+  </div>
+
+  <header class="hero" id="top">
+    <p class="hero-kicker">A tiny universe, just for you</p>
+    <h1>Happy Anniversary, <span class="name-glow">Jaan</span></h1>
+    <p class="hero-sub">Not married yet — but already my favourite forever thing.</p>
+    <div class="hero-hearts" aria-hidden="true">
+      <span class="mini-heart h1">💗</span>
+      <span class="mini-heart h2">✨</span>
+      <span class="mini-heart h3">🌸</span>
+      <span class="mini-heart h4">💕</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card pop-in" id="daysTogether">
+        <span class="stat-num" data-days>—</span>
+        <span class="stat-label">days of us</span>
+      </div>
+      <button type="button" class="btn-magic shimmer-btn" id="btnConfetti" aria-label="Surprise confetti">Tap for magic</button>
+    </div>
+    <a class="scroll-hint" href="#timeline">Our timeline ↓</a>
+  </header>
+
+  <nav class="dock" id="dock" aria-label="Sections">
+    <a href="#timeline">Timeline</a>
+    <a href="#memories">Memories</a>
+    <a href="#surprises">Surprises</a>
+    <a href="#letter">Letter</a>
+  </nav>
+
+  <main>
+    <section class="section timeline-section reveal-section" id="timeline">
+      <div class="section-head reveal">
+        <h2>Our timeline</h2>
+        <p>Every chapter with you feels like the best one.</p>
+      </div>
+      <div class="timeline" id="timelineRoot"></div>
+    </section>
+
+    <section class="section memories-section reveal-section" id="memories">
+      <div class="section-head reveal">
+        <h2>Little memories</h2>
+        <p>Tap a card — I saved something soft inside each one.</p>
+      </div>
+      <div class="memory-grid" id="memoryGrid"></div>
+    </section>
+
+    <section class="section surprises-section reveal-section" id="surprises">
+      <div class="section-head reveal">
+        <h2>Surprise corner</h2>
+        <p>Try everything. Nothing here is boring on purpose.</p>
+      </div>
+      <div class="surprise-grid">
+        <div class="surprise-box reveal reveal--tilt" data-surprise="hearts">
+          <span class="box-icon float-icon">💗</span>
+          <h3>Heart shower</h3>
+          <p>Tap the button — full screen cuteness.</p>
+          <button type="button" class="btn-surprise">Make it rain</button>
+        </div>
+        <div class="surprise-box reveal reveal--tilt" data-surprise="sparkle">
+          <span class="box-icon float-icon">✨</span>
+          <h3>Sparkle mode</h3>
+          <p>Drag your finger (or cursor) inside the box.</p>
+          <div class="sparkle-zone" id="sparkleZone" role="application" aria-label="Sparkle drawing pad"></div>
+        </div>
+        <div class="surprise-box reveal reveal--tilt" data-surprise="secret">
+          <span class="box-icon float-icon">🔐</span>
+          <h3>Secret phrase</h3>
+          <p>On a keyboard: type it anywhere. On a phone: use the little box below.</p>
+          <code class="hint-code">j a a n</code>
+          <label class="secret-label" for="secretInputMobile">Your nickname</label>
+          <input
+            type="text"
+            id="secretInputMobile"
+            class="secret-field"
+            inputmode="text"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="Type jaan here…"
+            aria-label="Type the secret nickname for a surprise"
+          />
+        </div>
+        <div class="surprise-box reveal reveal--tilt" data-surprise="gift">
+          <span class="box-icon">🎁</span>
+          <h3>Mystery gift</h3>
+          <p>Three taps unlocks it.</p>
+          <button type="button" class="btn-gift" id="giftBtn">Tap me (0/3)</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section letter-section reveal-section" id="letter">
+      <div class="section-head reveal">
+        <h2>Love letter</h2>
+        <p>Your message, sealed with a J.</p>
+      </div>
+      <div class="envelope-wrap">
+        <button type="button" class="envelope" id="envelopeBtn" aria-expanded="false">
+          <span class="envelope-flap"></span>
+          <span class="envelope-body">
+            <span class="seal">J</span>
+          </span>
+        </button>
+        <p class="envelope-hint">Open the envelope, Jaan</p>
+      </div>
+      <div class="letter-panel" id="letterPanel" hidden>
+        <div class="letter-paper">
+          <p class="letter-dear">Dear Jaan,</p>
+          <p id="letterBody"></p>
+          <p class="letter-sign">Forever yours,</p>
+          <p class="letter-name">— with all my heart</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Made with love · For Jaan only · <a href="#top">Back to top</a></p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
